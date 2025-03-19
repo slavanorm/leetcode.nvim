@@ -17,9 +17,6 @@ leetcode.start = function(on_vimenter)
 
     leetcode.setup_cmds()
 
-    local theme = require("leetcode.theme")
-    theme.setup()
-
     if not on_vimenter then
         if not standalone then
             prev_cwd = vim.fn.getcwd()

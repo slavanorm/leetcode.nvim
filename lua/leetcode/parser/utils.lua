@@ -1,5 +1,4 @@
 local log = require("leetcode.logger")
-local theme = require("leetcode.theme")
 
 ---@class lc.Parser.Utils
 local utils = {}
@@ -108,7 +107,6 @@ function utils.hl(tag) --
         table.insert(tag_names, tag.name)
     end
 
-    return theme.get_dynamic(tag_names)
 end
 
 return utils

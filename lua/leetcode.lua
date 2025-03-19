@@ -97,9 +97,6 @@ function leetcode.start(on_vimenter)
 
     leetcode.setup_cmds()
 
-    local theme = require("leetcode.theme")
-    theme.setup()
-
     if not on_vimenter then
         vim.cmd.enew()
     end
