@@ -89,7 +89,6 @@ function Question:create_buffer()
     vim.cmd("$tabe " .. path)
     self.bufnr = vim.api.nvim_get_current_buf()
     self.winid = vim.api.nvim_get_current_win()
-    ui_utils.win_set_winfixbuf(self.winid)
 
     self:open_buffer(existed)
 end

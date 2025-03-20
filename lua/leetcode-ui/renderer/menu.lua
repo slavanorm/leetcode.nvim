@@ -146,9 +146,6 @@ function Menu:apply_options()
         spell = false,
         signcolumn = "no",
     })
-    vim.schedule(function()
-        ui_utils.win_set_winfixbuf(self.winid)
-    end)
 end
 
 function Menu:unmount()

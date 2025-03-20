@@ -131,14 +131,6 @@ function utils.win_set_opts(winid, options)
 end
 
 ---@param winid number
-function utils.win_set_winfixbuf(winid)
-    local u = require("leetcode.utils")
-    u.with_version("0.10.0", function()
-        utils.win_set_opts(winid, { winfixbuf = true })
-    end)
-end
-
----@param winid number
 ---@param bufnr number
 ---@param force? boolean
 function utils.win_set_buf(winid, bufnr, force)

@@ -19,8 +19,9 @@ local function log_buf_not_empty(bufname)
 end
 
 local function buf_is_empty(buf)
-    local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
-    return not (#lines > 1 or (#lines == 1 and lines[1]:len() > 0))
+    return true
+    --local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
+    --return not (#lines > 1 or (#lines == 1 and lines[1]:len() > 0))
 end
 
 ---@param on_vimenter boolean
