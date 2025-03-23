@@ -36,16 +36,14 @@ function Description:mount()
     local ui_utils = require("leetcode-ui.utils")
     ui_utils.buf_set_opts(self.bufnr, {
         modifiable = false,
-        buflisted = false,
         matchpairs = "",
         swapfile = false,
         buftype = "nofile",
-        filetype = config.name,
+        filetype = "markdown",
         synmaxcol = 0,
     })
     ui_utils.win_set_opts(self.winid, {
-        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-        wrap = not img_sup,
+        wrap = true,
         colorcolumn = "",
         foldlevel = 999,
         foldcolumn = "1",
