@@ -193,6 +193,7 @@ function Menu:mount()
             else
                 local cmd = require("leetcode.command")
                 cmd.start_user_session()
+                cmd.qot()
             end
         end)
     else

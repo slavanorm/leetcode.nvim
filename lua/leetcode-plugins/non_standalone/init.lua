@@ -2,7 +2,7 @@
 local non_standalone = {}
 
 non_standalone.opts = {
-    lazy = false,
+    lazy = true,
 }
 
 function non_standalone.load()
