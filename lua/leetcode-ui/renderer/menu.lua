@@ -122,16 +122,15 @@ function Menu:set_page(name)
 end
 
 function Menu:apply_options()
-    api.nvim_buf_set_name(self.bufnr, "")
+    api.nvim_buf_set_name(self.bufnr, "Menu")
 
     ui_utils.buf_set_opts(self.bufnr, {
         modifiable = false,
-        buflisted = false,
         matchpairs = "",
         swapfile = false,
-        buftype = "nofile",
         filetype = config.name,
         synmaxcol = 0,
+        buftype = "nowrite",
     })
     ui_utils.win_set_opts(self.winid, {
         wrap = false,

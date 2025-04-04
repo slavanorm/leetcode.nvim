@@ -100,12 +100,11 @@ local M = {
 
         width = "40%", ---@type lc.size
 
-        show_stats = true, ---@type boolean
+        show_stats = false, ---@type boolean
     },
 
     ---@type lc.picker
     picker = { provider = nil },
-
     hooks = {
         ---@type fun()[]
         ["enter"] = {},
@@ -118,17 +117,20 @@ local M = {
     },
 
     keys = {
-        toggle = { "q" }, ---@type string|string[]
-        confirm = { "<CR>" }, ---@type string|string[]
+        toggle = { "x" }, ---@type string|string[]
+        confirm = {}, ---@type string|string[]
 
         reset_testcases = "r", ---@type string
         use_testcase = "U", ---@type string
         focus_testcases = "H", ---@type string
         focus_result = "L", ---@type string
     },
-
     ---@type boolean
     image_support = false,
 }
+vim.keymap.set({"n","v","x"},'<F1>',":Leet console<CR>" , {noremap=true,silent=true})
+vim.keymap.set({"n","v","x"},'<F2>',":Leet test<CR>" , {noremap=true,silent=true})
+vim.keymap.set({"n","v","x"},'<F3>',":Leet submit<CR>", {noremap=true,silent=true})
+vim.keymap.set({"n","v","x"},'<F4>',":Leet menu<CR>", {noremap=true,silent=true})
 
 return M

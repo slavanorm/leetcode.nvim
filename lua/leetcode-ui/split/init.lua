@@ -90,8 +90,8 @@ function Split:update_renderer()
     self.renderer.winid = self.winid
 end
 
-function Split:init(opts) --
-    local options = vim.tbl_deep_extend("force", {
+function Split:init(opts)
+   local options = vim.tbl_deep_extend("force", {
         relative = "editor",
         enter = false,
         focusable = true,

@@ -1,6 +1,4 @@
 local config = require("leetcode.config")
-local img_ok, image_api = pcall(require, "image")
-local img_sup = img_ok and config.user.image_support
 
 local Group = require("leetcode-ui.group")
 local Padding = require("leetcode-ui.lines.padding")
@@ -32,16 +30,17 @@ end
 function Description:mount()
     Description.super.mount(self)
     self:populate()
-
+    vim.api.nvim_buf_set_name(self.bufnr, "Task")
     local ui_utils = require("leetcode-ui.utils")
     ui_utils.buf_set_opts(self.bufnr, {
-        modifiable = false,
         matchpairs = "",
         swapfile = false,
-        buftype = "nofile",
         filetype = "markdown",
         synmaxcol = 0,
+        buflisted = true,
+        bufhidden = "hide",
     })
+    --[[
     ui_utils.win_set_opts(self.winid, {
         wrap = true,
         colorcolumn = "",
@@ -56,10 +55,7 @@ function Description:mount()
         signcolumn = "no",
         linebreak = true,
     })
-    if not img_ok and config.user.image_support then
-        log.error("image.nvim not found but `image_support` is enabled")
-    end
-
+      --]]
     self:draw()
     self:autocmds()
     return self
@@ -67,39 +63,6 @@ end
 
 function Description:draw()
     Description.super.draw(self)
-    self:draw_imgs()
-end
-
-function Description:draw_imgs()
-    if not img_sup then
-        return
-    end
-
-    local lines = vim.api.nvim_buf_get_lines(self.bufnr, 1, -1, false)
-    for i, line in ipairs(lines) do
-        for link in line:gmatch("%((http[s]?://%S+)%)") do
-            local img = self.images[link]
-
-            if not img then
-                self.images[link] = {}
-
-                image_api.from_url(link, {
-                    buffer = self.bufnr,
-                    window = self.winid,
-                    with_virtual_padding = true,
-                }, function(image)
-                    if not image then
-                        return
-                    end
-
-                    self.images[link] = image
-                    image:render({ y = i + 1 })
-                end)
-            elseif not vim.tbl_isempty(img) then
-                img:clear(true)
-            end
-        end
-    end
 end
 
 function Description:toggle_stats()

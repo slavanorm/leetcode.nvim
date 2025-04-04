@@ -138,6 +138,8 @@ function cmd.qot()
         end
         local problemlist = require("leetcode.cache.problemlist")
         Question(problemlist.get_by_title_slug(qot.title_slug)):mount()
+                cmd.desc_toggle()
+
     end)
 end
 
